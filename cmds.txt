@@ -1,0 +1,27 @@
+Installing mmcv & mmsegmentation
+
+pip install -U openmim
+mim install mmcv-full
+mim install mmsegmentation
+
+
+
+Initializing EchoNet-Dynamic Dataset
+
+cd echods
+python setup.py build
+python setup.py install
+
+
+
+Training
+
+python /mmseg/tools/train.py seg.knet_s3_upernet_swin-l.Config.py
+python /mmseg/tools/train.py seg.segformer_mit-b5.Config.py
+
+
+
+Testing
+
+python /mmseg/tools/test.py seg.knet_s3_upernet_swin-l.Config.py ../work_dirs/seg.knet_s3_upernet_swin-l.Config/latest.pth --eval mIoU mDice
+python /mmseg/tools/train.py seg.segformer_mit-b5.Config.Config.py ../work_dirs/seg.segformer_mit-b5.Config/latest.pth --eval mIoU mDice
